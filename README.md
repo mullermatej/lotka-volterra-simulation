@@ -38,5 +38,5 @@ The simulation is implemented using the `deSolve` package in R, and the results 
 This project was developed as part of the **Modeling and Simulations** course  
 at the **Faculty of Informatics, University of Pula**.
 
-**Course:** Distributed Systems  
+**Course:** Modeling and Simulations  
 **Mentor:** izv. prof. dr. sc. Darko Etinger
