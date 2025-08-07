@@ -1,42 +1,30 @@
-# Lotka-Volterra Simulation in R
+# Reinforcement Learning for Ecosystem Stability in a Lotka-Volterra Predator-Prey Model
 
-This project demonstrates a basic simulation of an ecosystem with two interacting species — prey and predator — using the Lotka-Volterra system of differential equations.
+### Abstract
+This project investigates the application of Reinforcement Learning (RL) to maintain ecosystem stability within the classic Lotka-Volterra predator-prey model. A Q-learning agent is trained to manage population dynamics by making discrete interventions, such as adding prey or removing predators. The agent's goal is to learn a policy that prevents the extinction of either species, a common risk in unmanaged Lotka-Volterra simulations. The performance of the trained RL agent is systematically compared against two baseline scenarios: a non-intervention (natural dynamics) model and a random-action agent. Results demonstrate that the RL agent successfully learns a "crisis intervention" strategy, significantly outperforming both baselines by preventing ecosystem collapse in critical, near-extinction scenarios. This work highlights the potential of RL as a tool for proactive and intelligent management of complex ecological systems.
 
-## Description
+### Project Overview
+The entire simulation, from model definition and agent training to results analysis and visualization, is implemented in a single Jupyter Notebook (`lotka_volterra_simulation.ipynb`).
 
-The model is based on the following equations:
+**Core Components:**
+- **Lotka-Volterra Model:** The ecosystem dynamics are modeled using the Lotka-Volterra differential equations, solved with SciPy's `odeint` function.
+- **Reinforcement Learning Agent:** A Q-learning agent is implemented from scratch.
+  - **State Space:** Discretized bins of prey and predator populations.
+  - **Action Space:** `[do_nothing, add_prey, remove_predators]`
+  - **Reward Function:** The agent is rewarded for maintaining both populations above a minimum threshold and penalized heavily for extinction events.
+- **Simulation & Analysis:** The project includes a comparative analysis framework to test the trained agent against baseline models, with results visualized using Matplotlib.
 
-- dx/dt = αx - βxy  
-- dy/dt = δxy - γy
-
-Where:
-- x(t): number of prey at time t  
-- y(t): number of predators at time t  
-- α: natural growth rate of prey  
-- β: rate at which predators consume prey  
-- δ: rate of predator reproduction based on prey availability  
-- γ: natural death rate of predators  
-
-The simulation is implemented using the `deSolve` package in R, and the results are visualized using `ggplot2`.
-
-## Contents
-
-- `lotka_volterra_simulation.R` – main R script for running the simulation and plotting the results  
-- `simulation_results.csv` – output data from the simulation  
-- Plots:
-  - Population over time (prey and predator)
-  - Phase space diagram (prey vs predator)
-
-## How to Run
-
-1. Open the project in RStudio  
-2. Run the `lotka_volterra_simulation.R` script  
-3. The plots will be displayed, and a CSV file with simulation results will be saved
+**Technologies Used:**
+- **Python:** Core programming language.
+- **NumPy:** For numerical operations and Q-table management.
+- **SciPy:** For solving the Lotka-Volterra ordinary differential equations (ODEs).
+- **Matplotlib:** For data visualization and plotting results.
+- **Jupyter Notebook:** For interactive development and presentation.
 
 ---
+This project was submitted as part of the **Modeling and Simulations** course.
 
-This project was developed as part of the **Modeling and Simulations** course  
-at the **Faculty of Informatics, University of Pula**.
-
-**Course:** Modeling and Simulations  
-**Mentor:** izv. prof. dr. sc. Darko Etinger
+> **Author:** Muller Matej  
+> **Faculty:** Faculty of Informatics in Pula  
+> **Course:** Modeling and Simulations  
+> **Mentors:** Robert Šajina, Darko Etinger
